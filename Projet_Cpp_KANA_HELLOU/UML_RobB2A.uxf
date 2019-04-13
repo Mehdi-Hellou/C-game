@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>556</x>
+      <y>428</y>
+      <w>208</w>
+      <h>172</h>
+    </coordinates>
+    <panel_attributes>/Personnage/
+--
+#pv_max: int
+#pv: int
+#atk: int
+#def: int
+#niveau: int
+#exp: int
+#sens: int
+#sensPrec: int
+#n_attack: int
+#fin: int
+#left: Sprite*
+#right: Sprite*
+#atk_right: Sprite*
+#atk_left: Sprite*
+#immobile: Sprite*
+#immobileL: Sprite*
+#deadR: Sprite*
+#deadL: Sprite*
+--
++Personnage()
++~Personnage()
+/+init(renderer: SDL_Renderer*, width: int, height: int, x: int, y: int): void/
+/+mort(): void/
++encaisse(degats: int): void
++getCollider(): SDL_Rect&amp;
++getPV(): const int&amp;
+
+
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>444</y>
+      <w>220</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>/Humain/
+--
+#nom: std::string
+#mana_max: int
+#mana: int
+#finL: int
+#bool: lance
+#hud: Hud*
+#touche: Controls*
+--
++Humain(n: const std::string&amp;, controls: const Controls&amp;)
++~Humain()
+/+update(state: const Uint8*): void/
+/+move(state: const Uint8*): void/
+/+attaque(): void/
+/+draw(renderer: SDL_Renderer*, mechants: std::vector&lt;Mechant*&gt;): void/
+/+mort(): void/
++move(x: int, y: int): void
++update(): void
++regen(): void
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>324</y>
+      <w>208</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>/Mechant/
+--
+-hpBar: StatBar*
+-atkCollR: Sprite*
+-atkCollL: Sprite*
+--
++Mechant()
++~Mechant()
+/+draw(renderer: SDL_Renderer*, gentils: std::vector&lt;Humain*&gt;): void/
+/+update(gentils: std::vector&lt;Humain*&gt;): void/
+/+move(x: int, y: int): void/
+/+attaque(): void/
+/+mort(): void/
+/+detecter(gentils: std::vector&lt;Humain*&gt;): void/
++getFin(): int
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>384</y>
+      <w>208</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>Robot
+--
+--
++Robot()
++~Robot()
++init(renderer: SDL_Renderer*, width: int, height: int, x: int, y: int): void
++draw(renderer: SDL_Renderer*, gentils: std::vector&lt;Humain*&gt;): void
++update(gentils: std::vector&lt;Humain*&gt;): void
++move(x: int, y: int): void
++attaque(): void
++mort(): void
++detecter(gentils: std::vector&lt;Humain*&gt;): void
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>504</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Magicien
+--
+-bdf_r: Sprite*
+-bdf_l: Sprite*
+--
++Magicien(n: const std::string&amp;, controls: const Controls&amp;)
++~Magicien()
++init(renderer: SDL_Renderer*, width: int, height: int, x: int, y: int): void
++draw(renderer: SDL_Renderer*, mechants: std::vector&lt;Mechants*&gt;): void
++update(state: const Uint8*): void
++handleEvents(state: const Uint8*): void
++move(state: const Uint8*): void
++attaque(): void
++mort(): void
++bouleDeFeu(): int
++tempete(): void
+
+
+
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>680</y>
+      <w>216</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Ninja
+--
+-lance_left: Sprite*
+-lance_right: Sprite*
+-kunai_left: Sprite*
+-kunai_right: Sprite*
+-epeCollR: Sprite*
+-epeCollL: Sprite*
+--
++Ninja(n: const std::string&amp;, controls: const Controls&amp;)
++~Ninja()
++init(renderer: SDL_Renderer*, width: int, height: int, x: int, y: int): void
++draw(renderer: SDL_Renderer*, mechants: std::vector&lt;Mechants*&gt;): void
++update(state: const Uint8*): void
++handleEvents(state: const Uint8*): void
++move(state: const Uint8*): void
++attaque(): void
++mort(): void
++kunai(): int
++epe(): void
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>12</x>
+      <y>256</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Zombie
+--
+--
++Zombie()
++~Zombie()
++init(renderer: SDL_Renderer*, width: int, height: int, x: int, y: int): void
++draw(renderer: SDL_Renderer*, gentils: std::vector&lt;Humain*&gt;): void
++update(gentils: std::vector&lt;Humain*&gt;): void
++move(x: int, y: int): void
++attaque(): void
++mort(): void
++detecter(gentils: std::vector&lt;Humain*&gt;): void
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>212</y>
+      <w>248</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Interface
+--
+-isRunning: bool
+-isChoosing: bool
+-isPlaying: bool
+-nJoueurs: int
+-state: const Uint8*
+-window: SDL_Window*
+-renderer: SDL_Renderer*
+-bg_texture: SDL_Texture*
+-event: SDL_Event
+-game: Partie*
+-menu: Menu*
+-choix: EcranChoix*
+--
++Interface()
++~Interface()
++init(title: const char*, xpos: int, ypos: int, width: int, height: int, fullscreen: bool): void
++render(): void
++update(): void
++handleEvents(): void
++clean(): void
++loadBackground(filename: const char*): void
++running(): bool
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>552</x>
+      <y>196</y>
+      <w>148</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Partie
+--
+-running: bool
+-nMechants: int
+-nGentils: int
+-vague: int
+-timer: Uint32
+-startTime: Uint32
+-gentils: std::vector&lt;Humain*&gt;
+-mechants: std::vector&lt;Mechant*&gt;
+-stockMechants: std::vector&lt;Mechant*&gt;
+-winTxt: Texte*
+-loseTxt: Texte*
+--
++Partie()
++Partie(renderer: SDL_Renderer*)
++~Partie()
++init(renderer: SDL_Renderer*): void
++render(rend: SDL_Renderer*): void
++update(state: const Uint8*): bool
++nouveauMechant(renderer: SDL_Renderer*): void
++isRunning(): bool
++runGame(): void
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>680</y>
+      <w>232</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Controls
+--
+-gauche: Uint8
+-droite: Uint8
+-atk1: Uint8
+-atk2: Uint8
+--
++Controls(g: const Uint8&amp;, d: const Uint8&amp;, a1: const Uint8&amp;, a2: const Uint8&amp;)
++~Controls()
++operator=(c: Controls*): void
++getGauche(): const Uint8&amp;
++getDroite(): const Uint8&amp;
++getAtk1(): const Uint8&amp;
++getAtk2(): const Uint8&amp;
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1016</x>
+      <y>208</y>
+      <w>152</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>EcranChoix
+--
+-nJ: int
+-sel: int
+-mage: Sprite*
+-ninja: Sprite*
+-mag_txt: Texte*
+-ninja_txt: Texte*
+-choix: Texte*
+-gentils: std::vector&lt;Humain*&gt;
+-mag_rect: SDL_Rect
+-ninja_rect: SDL_Rect
+-bg_texture: SDL_Texture*
+-event: SDL_Event
+--
++EcranChoix()
++~EcranChoix()
++init(renderer: SDL_Renderer*): void
++render(renderer: SDL_Renderer*): void
++update(): void
++handleEvents(): void
++close(): void
++loadBackground(renderer: SDL_Renderer*): void
++renderRect(renderer: SDL_Renderer*, sel: int): void 
++getTab(): std::vector&lt;Humain*&gt;
+
+
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>556</x>
+      <y>632</y>
+      <w>336</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Hud
+--
+-box: SDL_Rect
+-hpRect: SDL_Rect
+-manaRect:SDL_Rect
+-hpBar: StatBar*
+-manaBar: StatBar*
+-hpTxt: SDL_Texture*
+-manaTxt: SDL_Texture*
+-loadSurf: SDL_Surface*
+-name_txt: Texte*
+--
++Hud(renderer: SDL_Renderer*, hpBar_fname: const std::string&amp;, manaBar_fname: const std::string&amp;)
++~Hud()
++init(nom: const std::string&amp;, pv_max: int, pv: int, mana_max: int, mana: int, width: int, height: int, x: int, y: int): void
++update(pv: int, pv_max: int, mana: int, mana_max: int): void
++draw(renderer: SDL_Renderer*: void)
++move(x: int, y: int): void
+
+bg=green
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>732</x>
+      <y>52</y>
+      <w>212</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>Menu
+--
+-nJoueurs: int
+-titre: Texte*
+-combien: Texte*
+-txt_j1: Texte*
+-txt_j2: Texte*
+-bg_texture: SDL_Texture*
+-event: SDL_Event
+--
++Menu()
++~Menu()
++init(renderer: SDL_Renderer*): void
++render(renderer: SDL_Renderer*): void
++update(): void
++handleEvents(): void
++close(): void
++loadBackground(renderer: SDL_Renderer*, filename: const char*): void
++getJoueurs(): int
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>812</x>
+      <y>428</y>
+      <w>328</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Sprite
+--
+-texture: SDL_Texture*
+-srcRect: SDL_Rect
+-dstRect: SDL_Rect
+-anime: bool
+-animTimer: Uint32
+-animSpeed: int
+-frame: int
+-xFixe: int
+-xOffset: int
+-yOffset: int
+--
++Sprite()
++~Sprite()
++Sprite(renderer: SDL_Renderer*, const std::string&amp; filename)
++Sprite(renderer: SDL_Renderer*, const std::string&amp; filename, timer: Uint32, speed: float, nframe: float, xoff: int)
++init(src_width: int, src_height: int, src_x: int, src_y: int, dst_width: int, dst_height: int, dst_x: int, dst_y: int): void
++update(): void
++move(x: int, y: int): void
++draw(renderer: SDL_Renderer*): void
++setState(b: bool): void
++getTimer(): const Uint32&amp;
++setTimer(const Uint32&amp; time): void
++getLaps(): Uint32
++getRect(): SDL_Rect&amp;
++setPos(x: int, y: int): void
++collision(a: const SDL_Rect): void
+
+
+
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>596</y>
+      <w>172</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>StatBar
+--
+-pourcent: int
+--
++StatBar(renderer: SDL_Renderer*, filename: const std::string&amp;)
++~StatBar()
++update(stat_max: int, stat: int): void
+-toPer(stat_max: int, stat: int): void
+
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1016</x>
+      <y>52</y>
+      <w>192</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Texte
+--
+-txt: std::string
+-police: TTF_Font*
+-color: SDL_Color
+-txtSurf: SDL_Surface*
+-txtTexture: SDL_Texture*
+-dstRect: SDL_Rect
+-selected: bool
+--
++Texte(const std::string&amp; text)
++~Texte()
++init(renderer: SDL_Renderer*, policename: const std::string&amp;, size: int, r: Uint8, g: Uint8, b: Uint8, x: int, y: int): void
++render(renderer: SDL_Renderer*): void
++update(): void
++changeColor(r: Uint8, g: Uint8, r: Uint8): void
++isSelected(): bool
++selection(t: bool): void
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>324</y>
+      <w>80</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>392</y>
+      <w>80</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>524</y>
+      <w>80</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>212</x>
+      <y>564</y>
+      <w>84</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;10.0;80.0;10.0;80.0;370.0;10.0;370.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>512</y>
+      <w>60</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>348</y>
+      <w>148</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>350.0;200.0;350.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>572</y>
+      <w>208</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0;500.0;110.0;500.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>572</y>
+      <w>12</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>268</x>
+      <y>352</y>
+      <w>28</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0;10.0;670.0;50.0;670.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>468</y>
+      <w>60</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=8
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>584</y>
+      <w>712</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=2
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;10.0;120.0;480.0;1760.0;480.0;1760.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>212</x>
+      <y>600</y>
+      <w>768</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=6
+m2=1</panel_attributes>
+    <additional_attributes>10.0;490.0;1900.0;490.0;1900.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1084</x>
+      <y>364</y>
+      <w>12</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=2
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>252</y>
+      <w>56</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=0..n
+m2=1</panel_attributes>
+    <additional_attributes>120.0;10.0;70.0;10.0;70.0;590.0;10.0;590.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>228</y>
+      <w>84</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=0..n
+m2=1</panel_attributes>
+    <additional_attributes>190.0;10.0;10.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>76</y>
+      <w>84</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=3
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1072</x>
+      <y>160</y>
+      <w>16</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=3
+m2=1</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>844</x>
+      <y>164</y>
+      <w>12</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>976</x>
+      <y>268</y>
+      <w>48</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>628</x>
+      <y>4</y>
+      <w>428</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=2
+m2=1</panel_attributes>
+    <additional_attributes>10.0;480.0;10.0;10.0;1050.0;10.0;1050.0;120.0</additional_attributes>
+  </element>
+</diagram>
